@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+<body>
+    
+        
+        <!-- Receipe Content Area -->
+        <div class="receipe-content-area">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <div class="receipe-headline my-5">
+                            <span>{{ processo.created_date }}</span>
+                            <h2>{{ processo.title }}</h2>
+                            <div class="receipe-duration" style="word-wrap: break-word;">
+                                <h6>Descrição: {{ processo.description }}</h6>
+                                <h6>Categoria: {{ processo.category }}</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <!-- Single Preparation Step -->
+                        <div class="single-preparation-step d-flex">
+                            
+                        </div>
+                    </div>
+                </div>
+                <form action="#" method="post">
+                    {% csrf_token %}
+                    <div class="col-6 text-center">
+                        <button class="btn delicious-btn mt-30" type="submit" style="background-color: #B91A05;">Excluir Processo</button>
+                    </div>
+                </form>
+        <!-- ##### Footer Area Start ##### -->
+</body>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+<body>
+    <!-- ##### Best Receipe Area Start ##### -->
+    <section class="best-receipe-area">
+        <div class="container">
+            <div class="row">
+                <!-- Single Best Receipe Area -->
+                {% for processo in processos_d %}
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-best-receipe-area mb-30">
+                        <div class="receipe-content" style="border: 3px solid rgb(117, 34, 34); border-radius: 10px; padding-bottom: 30px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                            <a href="{% url 'processos' processo.cod %}">
+                                <h5>{{ processo.title }}</h5>
+                                <hr>
+                                <span>{{ processo.category }}</span>
+                                <br>
+                                <span>{{ processo.created_date }}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- ##### Best Receipe Area End ##### -->
+</body>
+{% endblock %}
