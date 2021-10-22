@@ -44,8 +44,13 @@ def criar(request):
     max = list()
     for todo in todos:
         max.append(todo.cod)
-    cod = sorted(max)
-    cod = cod[-1] + 1
+    if len(max) == 0:
+        max.append(1)
+        cod = sorted(max)
+        cod = cod[-1] + 1
+    else:
+        cod = sorted(max)
+        cod = cod[-1] + 1
 
     # Passa as informações para gerar o select no html
     opts = Category.objects.all()
@@ -76,6 +81,8 @@ def editar(request, processo_cod):
 
     if request.method == 'POST':
         title = request.POST['title']
+        if title.isspace():
+            title = "Sem Nome"
         description = request.POST['description']
         category = request.POST['categoria']
         category = request.POST['categoria']

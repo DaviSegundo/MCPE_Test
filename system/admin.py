@@ -10,5 +10,9 @@ class ListProcess(admin.ModelAdmin):
     list_filter = ('category',)
     list_per_page = 5
 
-admin.site.register(Category)
+class ListCate(admin.ModelAdmin):
+    list_display = ('cod', 'description')
+    list_display_links = ('cod', 'description')
+
+admin.site.register(Category, ListCate)
 admin.site.register(Process, ListProcess)
