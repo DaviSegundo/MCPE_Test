@@ -22,14 +22,14 @@
                                <label for="nome_receita"><b>Título do Processo</b></label>
                                <input type="text" id="nome_receita" class="form-control" name="title" placeholder="Ex. Processo..." required>
                            </div>
-                           <div class="col-12">
+                           <div class="col-12" style="margin-top: 15px;">
                                <label for="file"><b>Descrição</b></label>
                                <textarea class="form-control" name="description" cols="30" rows="10" placeholder="Descrição" required></textarea>
                            </div>
                            <div class="col-12 col-lg-3">
                                <label for="file"><b>Categoria do Processo</b></label>
                                
-                               <select class="form-control" name="categoria" style="text-align-last: center;" required>
+                               <select class="form-control" name="categoria" style="padding: 0px;" required>
                                 {% for opt in opts %}
                                     <option>{{ opt.description }}</option>
                                 {% endfor %}
