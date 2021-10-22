@@ -101,3 +101,15 @@ Por aqui adicionamos as categorias possíveis que os processos podem receber.
     <img src='./docs/admin_categorias.png' height=450 style="border-radius: 10px;">
 </p>
 <hr>
+
+### Design Responsivo:
+Demostração da responsividade das páginas.
+<p align='center'>
+    <img src='./docs/resp_inicial.png' height=450 style="border-radius: 10px;">
+    <span>.</span>
+    <img src='./docs/resp_cadastro.png' height=450 style="border-radius: 10px;">
+    <span>.</span>
+    <img src='./docs/resp_processo.png' height=450 style="border-radius: 10px;">
+    <span>.</span>
+    <img src='./docs/resp_busca.png' height=450 style="border-radius: 10px;">
+</p>
