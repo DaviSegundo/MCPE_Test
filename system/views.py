@@ -13,13 +13,6 @@ def index(request):
     processos = Process.objects.all().order_by("-created_date")
 
     form = RequestContext(request)
-    if request.method == "POST":
-        n_proc = request.POST['search']
-        s_proc = Process.objects.filter(title=n_proc)
-        procs = list()
-        for p in s_proc:
-            procs.append(p)
-        return render(request, 'index.html', {'form': form, "processos_d": procs})
 
     return render(request, 'index.html', {'form': form, "processos_d": processos})
 
@@ -70,6 +63,34 @@ def criar(request):
         return redirect('index')
 
     return render(request, 'criar.html', {'form': form, 'opts': opts})
+
+
+"""
+Rota para fazer a alteração de dados do processo.
+"""
+
+
+def editar(request, processo_cod):
+    processo = get_object_or_404(Process, pk=processo_cod)
+    opts = Category.objects.all()
+
+    if request.method == 'POST':
+        title = request.POST['title']
+        description = request.POST['description']
+        category = request.POST['categoria']
+        category = request.POST['categoria']
+        category = Category.objects.filter(description=category)
+
+        Process.objects.filter(cod=processo_cod).update(title=title, description=description, category=category[0])
+        return redirect('index')
+
+    return render(request, 'editar.html', {'processo':processo, 'opts':opts})
+
+
+"""
+Rota para realizar a busca de processos dentre todos os cadastrados.
+"""
+
 
 def buscar(request):
     processos_busca = Process.objects.order_by("-created_date").filter()

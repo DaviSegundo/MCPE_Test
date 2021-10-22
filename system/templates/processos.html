@@ -32,8 +32,17 @@
                     {% csrf_token %}
                     <div class="col-6 text-center">
                         <button class="btn delicious-btn mt-30" type="submit" style="background-color: #B91A05;">Excluir Processo</button>
+                        
                     </div>
                 </form>
+
+                <form action="{% url 'editar' processo.cod%}">
+                    {% csrf_token %}
+                    <div class="col-6 text-center">
+                        <button class="btn delicious-btn mt-30" type="submit" style="background-color: #607449;">Editar Processo</button>
+                    </div>
+                </form>
+                
         <!-- ##### Footer Area Start ##### -->
 </body>
 {% endblock %}

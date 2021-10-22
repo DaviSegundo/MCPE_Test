@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- ##### Contact Form Area Start ##### -->
+<div class="contact-area section-padding-0-80">
+   <div class="container">
+       <div class="row">
+           <div class="col-12">
+               <div class="section-heading">
+               </div>
+           </div>
+       </div>
+       
+       <div class="row">
+           <div class="col-12">
+           <p>Todos os campos são obrigatórios</p>
+               <div class="contact-form-area">
+                   <form action="{% url 'editar' processo.cod %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                       <div class="row">
+                           <div class="col-12 col-lg-12">
+                               <label for="nome_receita"><b>Título do Processo</b></label>
+                               <input type="text" id="nome_receita" class="form-control" value="{{ processo.title }}" name="title" required>
+                           </div>
+                           <div class="col-12" style="margin-top: 15px;">
+                               <label for="file"><b>Descrição</b></label>
+                               <textarea class="form-control" name="description" cols="30" rows="10" required>{{ processo.description }}</textarea>
+                           </div>
+                           <div class="col-12 col-lg-3">
+                               <label for="file"><b>Categoria do Processo</b></label>
+                               
+                               <select class="form-control" name="categoria" style="padding: 0px;" required>
+                                {% for opt in opts %}
+                                    {% if opt == processo.category %}
+                                        <option selected>{{ opt.description }}</option>
+                                    {% else %}
+                                        <option>{{ opt.description }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                                </select>
+                            </div>
+                           <div class="col-12 text-center">
+                               <button class="btn delicious-btn mt-30" type="submit">Editar Processo</button>
+                           </div>
+                       </div>
+                   </form>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+{% endblock %}
