@@ -10,7 +10,7 @@ Rota para fazer a construção do índice com todos os processos.
 
 
 def index(request):
-    processos = Process.objects.all()
+    processos = Process.objects.all().order_by("-created_date")
 
     form = RequestContext(request)
     if request.method == "POST":
@@ -70,3 +70,12 @@ def criar(request):
         return redirect('index')
 
     return render(request, 'criar.html', {'form': form, 'opts': opts})
+
+def buscar(request):
+    processos_busca = Process.objects.order_by("-created_date").filter()
+
+    if 'buscar' in request.GET:
+        nome_buscar = request.GET['buscar']
+        processos_busca = processos_busca.filter(title__icontains=nome_buscar)
+        
+    return render(request, 'buscar.html', {'processos_d':processos_busca})
