@@ -13,7 +13,7 @@ Em seguida podemos criar um ambiente virtual:
 ```sh
 $ python -m venv ./venv
 ```
-Agora para iniciar o ambiente virtual no windowns:
+Agora para iniciar o ambiente virtual no windows:
 ```sh
 $ .\venv\Scripts\activate
 ```
@@ -25,8 +25,6 @@ Para finalizar precisamos executar o server para conseguir ver no browser:
 ```sh
 python .\manage.py runserver
 ```
-
-
 
 ## Funcionalidades Backend:
 - Consultar.
