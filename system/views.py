@@ -53,7 +53,6 @@ def criar(request):
         max.append(todo.cod)
     cod = sorted(max)
     cod = cod[-1] + 1
-    print(cod)
 
     # Passa as informações para gerar o select no html
     opts = Category.objects.all()
