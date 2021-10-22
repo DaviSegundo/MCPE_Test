@@ -3,6 +3,31 @@
 
 #### Autor:  Davi Segundo Pinheiro
 
+## Executar o projeto:
+
+Para executar esse projeto o primeiro passo é clonar o repositório:
+```sh
+$ git clone https://github.com/DaviSegundo/MPCE_Test.git
+```
+Em seguida podemos criar um ambiente virtual:
+```sh
+$ python -m venv ./venv
+```
+Agora para iniciar o ambiente virtual no windowns:
+```sh
+$ .\venv\Scripts\activate
+```
+É preciso instalar as dependências do projeto dentro do ambiente virtual:
+```sh
+$ pip install -r .\requirements.txt
+```
+Para finalizar precisamos executar o server para conseguir ver no browser:
+```sh
+python .\manage.py runserver
+```
+
+
+
 ## Funcionalidades Backend:
 - Consultar.
 - Cadastrar.
