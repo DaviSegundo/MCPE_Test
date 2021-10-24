@@ -3,11 +3,31 @@
 
 #### Autor:  Davi Segundo Pinheiro
 
-## Executar o projeto:
+## Deploy do Serviço na AWS:
+Acesse o teste do serviço sem precisar instalar o projeto:
+
+- Link: http://ec2-52-67-207-50.sa-east-1.compute.amazonaws.com
+
+## Executar o Projeto via Docker:
+É possível fazer o download direto da imagem via **Docker Hub** com o comando:
+```sh
+$ docker pull davisegundo88/django_app_mpce
+```
+
+Ou pode gerar a imagem localmente executando o comando no terminal, usando o arquivo .dockerfile que está no projeto:
+```sh
+$ docker build -f .\mpce.dockerfile -t davisegundo88/django_app_mpce .
+```
+
+## Executar o Projeto Localmente:
 
 Para executar esse projeto o primeiro passo é clonar o repositório:
 ```sh
 $ git clone https://github.com/DaviSegundo/MPCE_Test.git
+```
+Acesse o diretório que foi criado:
+```sh
+$ cd MPCE_Test
 ```
 Em seguida podemos criar um ambiente virtual:
 ```sh
@@ -23,7 +43,7 @@ $ pip install -r .\requirements.txt
 ```
 Para finalizar precisamos executar o server para conseguir ver no browser:
 ```sh
-python .\manage.py runserver
+$ python .\manage.py runserver
 ```
 
 ## Funcionalidades Backend:
@@ -35,6 +55,8 @@ python .\manage.py runserver
 - Controle de Admin.
 
 A aplicação tem persistência dos dados no Banco de dados. Para esse projeto foi utilizado o **SQLite3**.
+
+Foi realizado um error handling para evitar problemas de criação e, também, foi implementado um sistema de retorno de mensagens informativas para descrever as ações executadas e problemas encontrados.
 
 ## Funcionalidades Frontend:
 - Interface responsiva.
