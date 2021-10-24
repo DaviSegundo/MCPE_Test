@@ -1,4 +1,7 @@
+from django.contrib import messages
 from django.shortcuts import redirect, render, get_object_or_404
+
+from mpce_test.settings import MESSAGE_TAGS
 from .models import Category, Process
 from django.template import RequestContext
 
@@ -28,6 +31,7 @@ def processos(request, processo_cod):
     form = RequestContext(request)
     if request.method == "POST":
         processo.delete()
+        messages.success(request, 'Processo removido com sucesso!')
         return redirect('index')
 
     return render(request, 'processos.html', {'form': form, "processo": processo})
@@ -65,6 +69,7 @@ def criar(request):
         proc = Process.objects.create(
             cod=cod, title=title, description=description, category=category[0])
         proc.save()
+        messages.success(request, "Processo criado com sucesso!")
         return redirect('index')
 
     return render(request, 'criar.html', {'form': form, 'opts': opts})
@@ -82,13 +87,15 @@ def editar(request, processo_cod):
     if request.method == 'POST':
         title = request.POST['title']
         if title.isspace():
-            title = "Sem Nome"
+            messages.error(request, 'O campo não pode ter só espaços!')
+            return render(request, 'editar.html', {'processo':processo, 'opts':opts})
         description = request.POST['description']
         category = request.POST['categoria']
         category = request.POST['categoria']
         category = Category.objects.filter(description=category)
 
         Process.objects.filter(cod=processo_cod).update(title=title, description=description, category=category[0])
+        messages.success(request, 'Edição feita com sucesso!')
         return redirect('index')
 
     return render(request, 'editar.html', {'processo':processo, 'opts':opts})
