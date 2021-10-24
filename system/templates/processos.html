@@ -2,8 +2,6 @@
 {% load static %}
 {% block content%}
 <body>
-    
-        
         <!-- Receipe Content Area -->
         <div class="receipe-content-area">
             <div class="container">
@@ -28,14 +26,18 @@
                         </div>
                     </div>
                 </div>
-                <form action="#" method="post">
+                <form action="{% url 'processos' processo.cod%}" method="post">
                     {% csrf_token %}
                     <div class="col-6 text-center">
-                        <button class="btn delicious-btn mt-30" type="submit" style="background-color: #B91A05;">Excluir Processo</button>
+                        <button class="btn delicious-btn mt-30" type="submit" onclick=confirmar() style="background-color: #B91A05;">Excluir Processo</button>
                         
                     </div>
                 </form>
-
+                <script>
+                    function confirmar(){
+                        var resultado = confirm("Deseja excluir o Processo ?");
+                    }
+                </script>
                 <form action="{% url 'editar' processo.cod%}">
                     {% csrf_token %}
                     <div class="col-6 text-center">
@@ -44,5 +46,6 @@
                 </form>
                 
         <!-- ##### Footer Area Start ##### -->
-</body>
+        
+    </body>
 {% endblock %}
