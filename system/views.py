@@ -27,14 +27,20 @@ Rota que redireciona para cada processo específico.
 
 def processos(request, processo_cod):
     processo = get_object_or_404(Process, pk=processo_cod)
-
     form = RequestContext(request)
-    if request.method == "POST":
-        processo.delete()
-        messages.success(request, 'Processo removido com sucesso!')
-        return redirect('index')
-
     return render(request, 'processos.html', {'form': form, "processo": processo})
+
+
+"""
+Rota para excluir o processo.
+"""
+
+
+def excluir(request, processo_cod):
+    processo = get_object_or_404(Process, pk=processo_cod)
+    processo.delete()
+    messages.success(request, 'Processo removido com sucesso!')
+    return redirect('index')
 
 
 """

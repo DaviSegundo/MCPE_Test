@@ -26,16 +26,21 @@
                         </div>
                     </div>
                 </div>
-                <form action="{% url 'processos' processo.cod%}" method="post">
+                <form action="{% url 'excluir' processo.cod%}">
                     {% csrf_token %}
                     <div class="col-6 text-center">
-                        <button class="btn delicious-btn mt-30" type="submit" onclick=confirmar() style="background-color: #B91A05;">Excluir Processo</button>
+                        <button class="btn delicious-btn mt-30" onclick="return confirmar()" style="background-color: #B91A05;">Excluir Processo</button>
                         
                     </div>
                 </form>
                 <script>
                     function confirmar(){
-                        var resultado = confirm("Deseja excluir o Processo ?");
+                        if (window.confirm("Deseja excluir o Processo ?")){
+                           return true
+                        }
+                        else{
+                            return false
+                        }
                     }
                 </script>
                 <form action="{% url 'editar' processo.cod%}">
