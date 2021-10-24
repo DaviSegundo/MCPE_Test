@@ -69,6 +69,9 @@ def criar(request):
     form = RequestContext(request)
     if request.method == 'POST':
         title = request.POST['title']
+        if title.isspace():
+            messages.error(request, 'O campo não pode ter só espaços!')
+            return render(request, 'criar.html', {'form': form, 'opts': opts})
         description = request.POST['description']
         category = request.POST['categoria']
         category = Category.objects.filter(description=category)
